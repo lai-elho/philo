@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dinner.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lai-elho <lai-elho@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/23 00:39:18 by lai-elho          #+#    #+#             */
+/*   Updated: 2024/12/23 00:39:20 by lai-elho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
@@ -35,8 +46,7 @@ int	dinner(t_table *table)
 		if (pthread_create(&table->philo[i].thread_id, NULL, routine,
 				&table->philo[i]))
 			return (exit_error("Thread creation is failed"));
-	if (pthread_create(&table->monitor_id, NULL, monitor_routine,
-			table->philo))
+	if (pthread_create(&table->monitor_id, NULL, monitor_routine, table->philo))
 		return (exit_error("Thread_creation is failed"));
 	i = -1;
 	while (++i < table->number_of_philo)
